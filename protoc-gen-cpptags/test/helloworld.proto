@@ -1,0 +1,37 @@
+syntax = "proto3";
+import "cpptags.proto";
+package helloworld;
+
+message User
+{
+	string name = 1 [(cpptags.log) = true];
+	string sex = 2;
+}
+
+message DoYouLoveMe
+{
+	User user = 1 [(cpptags.log) = true];
+	string me = 2;
+}
+
+message Response
+{
+	string result = 1;
+	User user = 2;
+}
+
+message Response2
+{
+	string result = 1 [(cpptags.log) = true];
+	repeated User user = 2;
+}
+
+service HelloWorld 
+{
+	rpc SayYouLoveMe(DoYouLoveMe) returns (Response) {}
+}
+
+service HelloWorld2
+{
+	rpc SayYouLoveMe(DoYouLoveMe) returns (Response2) {}
+}
