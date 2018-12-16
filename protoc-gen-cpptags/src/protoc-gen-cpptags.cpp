@@ -96,6 +96,7 @@ void CppTagsMessageTypeMask<$ns$::$messageType$>::MaskMessageToJson(const $ns$::
 
 const auto CppMaskMessageDefinePrefix =
 R"(
+template<>
 void CppTagsMessageTypeMask<$ns$::$messageType$>::MaskMessageToJson(const $ns$::$messageType$& src, std::string* out) {
 )";
 
