@@ -59,7 +59,7 @@ void escapeCopy(std::string& output, const char* input, bool skipDoubleQuota = f
 		{
 			output.append("\\t");
 		}
-		else if (ch > 0x80) //Ŀǰ������UCS-2��Χ
+		else if (ch > 0x80) //Ä¿Ç°½ö´¦ÀíUCS-2·¶Î§
 		{
 			// 0080 ~ 07FF
 			// 110x xxxx 10xx xxxx
@@ -274,6 +274,10 @@ namespace zap
 		m.append(zap::String("msg", msg));
 		for (auto it = fields.begin(); it != fields.end(); ++it)
 		{
+			if (it->length() == 0)
+			{
+				continue;
+			}
 			m.append(",");
 			m.append(*it);
 		}
