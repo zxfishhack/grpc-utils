@@ -2,27 +2,38 @@ syntax = "proto3";
 import "cpptags.proto";
 package helloworld;
 
+enum StatusCode 
+{
+	OK = 0;
+	ERR = 1;
+}
+
 message User
 {
-	string name = 1 [(cpptags.log) = true];
+	StatusCode code = 12[(cpptags.log_field) = "aaa"];
+	string name = 1 [(cpptags.log_field) = "name"];
 	string sex = 2;
+	int32 int1 = 3[(cpptags.log_field) = "int1"]; 
+	uint32 int2 = 4[(cpptags.log_field) = "int2"]; 
+	int64 int3 = 5[(cpptags.log_field) = "int3"]; 
+	uint64 int4 = 6[(cpptags.log_field) = "int4"]; 
 }
 
 message DoYouLoveMe
 {
-	User user = 1 [(cpptags.log) = true];
-	string me = 2;
+	User user = 1 [(cpptags.log_field) = "user"];
+	string me = 2 [(cpptags.log_field) = "me"];
 }
 
 message Response
 {
 	string result = 1;
-	User user = 2;
+	repeated User user = 2 [(cpptags.log_field) = "rs_user"];
 }
 
 message Response2
 {
-	string result = 1 [(cpptags.log) = true];
+	string result = 1 [(cpptags.log_field) = "result"];
 	repeated User user = 2;
 }
 
