@@ -428,14 +428,14 @@ namespace zap
 	{
 		Field m;
 		auto idx = 0;
-		m.reverse(obj.size());
+		m.reserve(obj.size());
 		for(auto ch : obj)
 		{
 			if (ch == '{')
 			{
 				if (idx != 0)
 				{
-					m.append(ch);
+					m.push_back(ch);
 				}
 				idx ++;
 			}
@@ -444,12 +444,12 @@ namespace zap
 				idx --;
 				if (idx != 0)
 				{
-					m.append(ch);
+					m.push_back(ch);
 				}
 			}
 			else
 			{
-				m.append(ch);
+				m.push_back(ch);
 			}
 		}
 		return m;
